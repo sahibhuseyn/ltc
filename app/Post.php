@@ -9,7 +9,7 @@ class Post extends Model
     public static function getPosts ($language_code){
         $language_id = Language::getLanguageByCode($language_code)->id;
 
-        return Post::where('language_id', $language_id)->paginate(9);
+        return Post::where('language_id', $language_id)->paginate(10);
     }
 
     public static function getPostsDesc($language_code){

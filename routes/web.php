@@ -28,6 +28,7 @@ Route::group(['middleware' => 'language', 'web'], function () {
     Route::group(['prefix' => 'courses'], function () {
         Route::get('/', 'Client\CourseController@courseList')->name('course_list');
         Route::get('/{slug}', 'Client\CourseController@courseSingle')->name('course_single');
+        Route::get('/category/{id}', 'Client\CourseController@courseCategory')->name('course_category');
     });
 
     Route::group(['prefix' => 'teachers'], function () {
@@ -35,9 +36,18 @@ Route::group(['middleware' => 'language', 'web'], function () {
         Route::get('/{slug}', 'Client\TeacherController@teacherSingle')->name('teacher_single');
     });
 
+    Route::group(['prefix' => 'study-abroad'], function (){
+        Route::get('/', 'Client\StudyController@studyList')->name('study_abroad');
+        Route::get('/{slug}', 'Client\StudyController@studySingle')->name('study_single');
+        Route::get('/type/{id}', 'Client\StudyController@studyType')->name('study_type');
+    });
+
     Route::group(['prefix' => 'posts'], function (){
         Route::get('/', 'Client\PostController@postList')->name('post_list');
         Route::get('/{slug}', 'Client\PostController@postSingle')->name('post_single');
+    });
+    Route::group(['prefix' => 'language_change'], function (){
+        Route::get('/{code}', 'Client\LanguageController@changeLanguage')->name('change_language');
     });
 
 });
@@ -47,6 +57,7 @@ Route::group(['middleware' => 'language', 'web'], function () {
 // ================================= ADMIN ===============================================================
 
 Route::group(['middleware' => ['admin', 'web', 'sharedData'], 'prefix' => 'dash'], function () {
+
     Route::get('/', 'Admin\MainController@index')->name('admin_index');
 
     Route::group(['prefix' => 'languages'], function () {

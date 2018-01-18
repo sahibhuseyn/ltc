@@ -4,7 +4,7 @@
 
 
     <!-- Inner Banner -->
-    <div class="inner-page-banner-area" style="background-image: url('/uploads/inner-bg')">
+    <div class="inner-page-banner-area" style="background-image: url('/uploads/inner-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-md-12 mx-auto text-center">

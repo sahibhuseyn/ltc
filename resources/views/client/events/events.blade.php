@@ -9,9 +9,8 @@
                 <div class="col-md-12 col-md-12 mx-auto text-center">
                     <h2 class="font-weight-bold text-uppercase display-4 text-white">Events</h2>
                     <ol class="list-inline text-center">
-                        <li class="list-inline-item"><a href="#">Home </a> &nbsp; / </li>
-                        <li class="list-inline-item"><a href="#">Pages</a>  &nbsp; / </li>
-                        <li class="list-inline-item active">Events </li>
+                        <li class="list-inline-item"><a href="{{ route('index') }}">@lang('top_header.home')</a> &nbsp; / </li>
+                        <li class="list-inline-item active">@lang('top_header.events')</li>
                     </ol>
                 </div>
             </div>
@@ -73,51 +72,48 @@
         </div>
     </section>
 
-    <div class="modal bookModal" tabindex="-1" role="dialog" >
+    <div class="modal fade bd-example-modal-lg bookModal" tabindex="-1" role="dialog" >
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-theme-colored">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title text-white" id="myModalLabel">Reservation Form</h4>
                 </div>
-                <div class="p-40">
+                <div class="p-4">
                     <!-- Reservation Form Start-->
                     <form id="reservation_form_popup" name="reservation_form" class="reservation-form" method="post" action=""><h3 class="mt-0 line-bottom text-theme-colored mb-40">@lang('top_header.book')!</h3>
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="form-group mb-30">
+                                <div class="form-group mb-3">
                                     <input placeholder="Enter Name" type="text" id="reservation_name" name="reservation_name" required="" class="form-control">
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group mb-30">
+                                <div class="form-group mb-3">
                                     <input placeholder="Email" type="text" id="reservation_email" name="reservation_email" class="form-control" required="">
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group mb-30">
+                                <div class="form-group mb-3">
                                     <input placeholder="Phone" type="text" id="reservation_phone" name="reservation_phone" class="form-control" required="">
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group mb-30">
+                                <div class="form-group mb-3">
                                     <div class="styled-select">
-                                        <select id="course_select" name="course_select" class="form-control" required="">
-                                            <option value="_val">- Select Your Course Type -</option>
+                                        <select id="course_select" name="course_select" class="form-control course_select" required="">
+                                            <option value="_val">@lang('form.select_event')</option>
+                                            @foreach($__LTCEVENTS__ as $event )
+                                                <option value="{{ $event->id }}">{{ $event->title }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group mb-30">
-                                    <p id="course_fee"></p>
-                                    {{--<input name="reservation_date" class="form-control required date-picker" type="text" placeholder="Reservation Date" aria-required="true">--}}
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group mb-0 mt-0">
                                     <input name="form_botcheck" class="form-control" type="hidden" value="">
-                                    <button type="submit" class="btn btn-colored btn-theme-colored btn-lg btn-flat border-left-theme-colored-4px" data-loading-text="Please wait...">@lang('links.submit')</button>
+                                    <button type="submit" class="btn btn-colored btn-theme-colored btn-lg btn-radius3" data-loading-text="Please wait...">@lang('links.submit')</button>
                                 </div>
                             </div>
                         </div>

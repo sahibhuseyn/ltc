@@ -9,8 +9,7 @@
                 <div class="col-md-12 col-md-12 mx-auto text-center">
                     <h2 class="font-weight-bold text-uppercase display-4 text-white">News Right</h2>
                     <ol class="list-inline text-center">
-                        <li class="list-inline-item"><a href="#">Home </a> &nbsp; / </li>
-                        <li class="list-inline-item"><a href="#">Pages</a>  &nbsp; / </li>
+                        <li class="list-inline-item"><a href="{{ route('index') }}">Home </a> &nbsp; / </li>
                         <li class="list-inline-item active">News Right</li>
                     </ol>
                 </div>
@@ -62,6 +61,12 @@
                     </div>
                 </div>
             </div>
+                    <div class="col-lg-12 col-md-12 mx-auto mt-5">
+                        <nav aria-label="Page navigation example">
+                            {{ $posts->links() }}
+
+                        </nav>
+                    </div>
         </div>
     </section>
 

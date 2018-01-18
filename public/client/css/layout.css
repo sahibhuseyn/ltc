@@ -626,7 +626,7 @@ button.btn.cs-brown-btn.hvr-curl-top-left {
 .inner-page-banner-area
 {
 	padding: 200px 0px;
-    background: url(../images/inner-bg.jpg) no-repeat;
+    background: url(../../uploads/inner-bg.jpg) no-repeat;
     color: #fff;
     background-position: center center;
     background-size: cover;
@@ -1326,4 +1326,11 @@ iframe.event-map
 }
 .bg__blue .card-header{
 	background: #003366!important;
+}
+
+.bg-theme-colored {
+	background-color: #ff6633 !important;
+}
+.course_select{
+	height: 45px!important;
 }

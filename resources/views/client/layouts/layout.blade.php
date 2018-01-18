@@ -11,7 +11,7 @@
     <title>Pro-Education - Education Multiple Html Template</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" href="{{ url('/uploads/favicon-16x16.png') }}">
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
@@ -61,10 +61,10 @@
                     </ul>
                 </div>
                 <div class="col-md-8 bg-transparent">
-                    <ul class="list-inline list__custom bg-transparent">
-                        <li class="mr-2"><a href=""></a></li>
-                        <li class="mr-2"><a href=""></a></li>
-                        <li><a href=""></a></li>
+                    <ul class="list-inline list__custom bg-transparent pull-right">
+                        @foreach($__LTCLANGUAGES__ as $language)
+                            <li class="mr-2"><a href="{{ route('change_language', $language->code) }}"><img src="{{ url('/uploads/'. $language->image) }}" alt=""></a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -85,53 +85,88 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarColor03">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href=" {{ route('index') }}"  aria-haspopup="true" aria-expanded="false">Home </a>
+                    <a class="nav-link" href=" {{ route('index') }}"  aria-haspopup="true" aria-expanded="false">@lang('navbar.home') </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about') }}"  aria-haspopup="true" aria-expanded="false">About Us </a>
+                    <a class="nav-link" href="{{ route('about') }}"  aria-haspopup="true" aria-expanded="false">@lang('navbar.about_us')</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{{ route('course_list') }}" aria-haspopup="true" aria-expanded="false">Courses </a>
+                    <a class="nav-link dropdown-toggle" href="{{ route('course_list') }}" aria-haspopup="true" aria-expanded="false">@lang('navbar.courses')</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="course.html">Courses 3 Column </a>
-                        <a class="dropdown-item" href="course-grid.html">Courses Grids</a>
-                        <a class="dropdown-item" href="course-detail.html">Courses Details</a>
+                        @foreach($__LTCCATEGORIES__ as $category)
+                            {{--BU METODU DEYISHMEK LAZIMDI--}}
+                            @php
+                                $hasChild = false;
+                                foreach ($__LTCCATEGORIES__ as $child) {
+                                    if ($category->id == $child->parent_id) {
+                                        $hasChild = true;
+                                    }
+                                }
+                            @endphp
+                            @if($category->parent_id == 0)
+                                    <a class="dropdown-item" href="{{ route('course_category', $category->id) }}">{{ $category->name }}</a>
+                                    @if($hasChild)
+                                        <ul class="dropdown">
+                                            @foreach($__LTCCATEGORIES__ as $child)
+                                                @if($category->id == $child->parent_id)
+                                                    <li class="dropdown-item"><a href="{{ route('course_category', $child->id) }}">{{ $child->name }}</a></li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                            @endif
+                        @endforeach
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{{ route('event') }}"  aria-haspopup="true" aria-expanded="false">Events </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="events.html">Events  </a>
-                        <a class="dropdown-item" href="event-single.html">Event Single</a>
-                        <a class="dropdown-item" href="event-calender.html">Event Calender</a>
-                    </div>
+                    <a class="nav-link" href="{{ route('event') }}"  aria-haspopup="true" aria-expanded="false">@lang('navbar.events') </a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="{{ route('teacher_list') }}"  aria-haspopup="true" aria-expanded="false">Our Teachers </a>
-                </li>
-
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{{ route('post_list') }}" aria-haspopup="true" aria-expanded="false"> News  </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="news.html">News 3 Column</a>
-                        <a class="dropdown-item" href="news-left.html">News Left Sidebar</a>
-                        <a class="dropdown-item" href="news-right.html">News Right Sidebar</a>
-                        <a class="dropdown-item" href="news-single.html">News Single</a>
-                    </div>
+                    <a class="nav-link" href="{{ route('teacher_list') }}"  aria-haspopup="true" aria-expanded="false">@lang('navbar.teachers')</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#"   aria-haspopup="true" aria-expanded="false"> Pages  </a>
+                    <a class="nav-link" href="{{ route('price') }}"  aria-haspopup="true" aria-expanded="false"> @lang('navbar.prices')</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="{{ route('post_list') }}" aria-haspopup="true" aria-expanded="false"> @lang('navbar.news')  </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="{{ route('gallery') }}" aria-haspopup="true" aria-expanded="false"> @lang('navbar.gallery')  </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="{{ route('study_abroad') }}" aria-haspopup="true" aria-expanded="false"> @lang('navbar.study_abroad')  </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="register.html">Register </a>
-                        <a class="dropdown-item" href="login.html">Login</a>
-                        <a class="dropdown-item" href="gallery.html">Gallery 3 Column</a>
-                        <a class="dropdown-item" href="gallery-grid.html">Gallery Grid</a>
+                @foreach($__LTCTYPES__ as $type)
+                    {{--BU METODU DEYISHMEK LAZIMDI--}}
+                    @php
+                        $hasChild = false;
+                        foreach ($__LTCTYPES__ as $child) {
+                            if ($type->id == $child->parent_id) {
+                                $hasChild = true;
+                            }
+                        }
+                    @endphp
+
+                    @if($type->parent_id == 0)
+                            <a class="dropdown-item" href="{{ route('study_type', $type->id) }}">{{ $type->name }}</a>
+                            @if($hasChild)
+                                <ul class="dropdown">
+                                    @foreach($__KTCTYPES__ as $child)
+                                        @if($type->id == $child->parent_id)
+                                            <li class="dropdown-item"><a href="{{ route('study_type', $child->id) }}">{{ $child->name }}</a></li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            @endif
+                            @endif
+                        @endforeach
                     </div>
+
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contacts') }}">Contact Us</a>
+                    <a class="nav-link" href="{{ route('contacts') }}">@lang('navbar.contact')</a>
                 </li>
             </ul>
         </div>
@@ -149,50 +184,39 @@
 <section class="footer">
     <div class="container">
         <div class="row animatedParent animateOnce animateOnce">
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-uppercase text-white">About Us</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtin eiusmodtin didunt ut labore et dolore magna aliqua.</p>
-                <h6 class="text-white">Follow Us:-</h6>
-                <ul class="list-inline">
-                    <li class="list-inline-item pr-2"><a href="#" class="text-white"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li class="list-inline-item pl-2 pr-2"><a href="#" class="text-white"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li class="list-inline-item pl-2 pr-2"><a href="#" class="text-white"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-            <div class="col-lg-2 col-md-6">
-                <h5 class="text-uppercase text-white">Useful Links</h5>
-                <ul class="list-inline">
-                    <li class="list-block-item"><span class="ti-angle-double-right"></span> <a href="#"> Home</a></li>
-                    <li class="list-block-item"><span class="ti-angle-double-right"></span> <a href="#"> About Us</a></li>
-                    <li class="list-block-item"><span class="ti-angle-double-right"></span> <a href="#"> Courses</a></li>
-                    <li class="list-block-item"><span class="ti-angle-double-right"></span> <a href="#"> Teachers</a></li>
-                    <li class="list-block-item"><span class="ti-angle-double-right"></span> <a href="#"> Contact Us</a></li>
+            <div class="col-lg-4 col-md-6">
+                <img class="mt-5 mb-20" alt="" src="{{ url('/uploads/logo-wide.png') }}">
+                <p>@lang('contact_info.address')</p>
+                <ul class="list-inline mt-5">
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray" href="tel:0124976297">@lang('contact_info.phone')</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray" href="tel:0124920792">@lang('contact_info.phone1')</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-whatsapp text-theme-color-2 mr-5"></i> <a class="text-gray" href="https://api.whatsapp.com/send?phone=00994552262485">@lang('contact_info.phone2')</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray" href="tel:0552124151">@lang('contact_info.phone3')</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-2 mr-5"></i> <a class="text-gray" href="tel:0702797517">@lang('contact_info.phone4')</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-whatsapp text-theme-color-2 mr-5"></i> <a class="text-gray" href="https://api.whatsapp.com/send?phone=00994702781777">@lang('contact_info.phone5')</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-2 mr-5"></i> <a class="text-gray" href="mailto:office@britishacademy.az">@lang('contact_info.mail')</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-color-2 mr-5"></i> <a class="text-gray" href="#">@lang('contact_info.domain')</a> </li>
                 </ul>
             </div>
             <div class="col-lg-4 col-md-6">
-                <h5 class="text-uppercase text-white">RECENT TWEETS</h5>
+                <h5 class="text-uppercase text-white">@lang('contact_info.links')</h5>
                 <ul class="list-inline">
-                    <li class="list-block-item">
-                        <i class="fa fa-twitter float-left mt-2 mr-2" aria-hidden="true"></i>
-                        <p><a href="#">@UNIVERSITY</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtin.<br />
-                            <a href="#">about 5 min ago</a></p>
-                    </li>
-                    <li class="list-block-item">
-                        <i class="fa fa-twitter float-left mt-2 mr-2" aria-hidden="true"></i>
-                        <p><a href="#">@UNIVERSITY</a> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtin.<br />
-                            <a href="#">about 5 min ago</a></p>
-                    </li>
+                    <li class="list-block-item"><span class="ti-angle-double-right"></span> <a href="{{ route('index') }}"> @lang('navbar.home')</a></li>
+                    <li class="list-block-item"><span class="ti-angle-double-right"></span> <a href="{{ route('about') }}"> @lang('navbar.about_us')</a></li>
+                    <li class="list-block-item"><span class="ti-angle-double-right"></span> <a href="{{ route('course_list') }}"> @lang('navbar.courses')</a></li>
+                    <li class="list-block-item"><span class="ti-angle-double-right"></span> <a href="{{ route('teacher_list') }}"> @lang('navbar.teachers')</a></li>
+                    <li class="list-block-item"><span class="ti-angle-double-right"></span> <a href="{{ route('contacts') }}"> @lang('navbar.contact')</a></li>
                 </ul>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-uppercase text-white">Instagram </h5>
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-uppercase text-white">@lang('open_hours.caption')</h5>
                 <ul class="list-inline">
-                    <li class="list-inline-item mb-2"><a href="#" target="_blank" title=""><img src="assets/images/sidebar-thumb-1.jpg" class="rounded" alt="" /></a></li>
-                    <li class="list-inline-item mb-2"><a href="#" target="_blank" title=""><img src="assets/images/sidebar-thumb-2.jpg" class="rounded" alt="" /></a></li>
-                    <li class="list-inline-item mb-2"><a href="#" target="_blank" title=""><img src="assets/images/sidebar-thumb-3.jpg" class="rounded" alt="" /></a></li>
-                    <li class="list-inline-item mb-2"><a href="#" target="_blank" title=""><img src="assets/images/sidebar-thumb-1.jpg" class="rounded" alt="" /></a></li>
-                    <li class="list-inline-item mb-2"><a href="#" target="_blank" title=""><img src="assets/images/sidebar-thumb-2.jpg" class="rounded" alt="" /></a></li>
-                    <li class="list-inline-item mb-2"><a href="#" target="_blank" title=""><img src="assets/images/sidebar-thumb-3.jpg" class="rounded" alt="" /></a></li>
+                    <li class="list-block-item">
+                        <span> @lang('open_hours.days') </span>
+                    </li>
+                    <li class="list-block-item">
+                        @lang('open_hours.hour')
+                    </li>
                 </ul>
             </div>
         </div>
@@ -203,15 +227,7 @@
 <div class="copyright">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 text-left">Copyright © Education. All Rights Reserved </div>
-            <div class="col-lg-6 col-md-6 text-right">
-                <ul class="linst-inline">
-                    <li class="list-inline-item"><a href="#">Privacy</a></li>
-                    <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
-                    <li class="list-inline-item"><a href="#">Sitemap</a></li>
-                    <li class="list-inline-item"><a href="#">Purchase</a></li>
-                </ul>
-            </div>
+            <div class="col-lg-6 col-md-6 text-left">Copyright © {{ date('Y') }}  London Training Centre. All Rights Reserved </div>
         </div>
     </div>
 </div>

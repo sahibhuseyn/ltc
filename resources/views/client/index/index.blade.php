@@ -19,9 +19,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 mx-auto text-center">
-                <h2 class="mb-3 text-uppercase font-weight-bold">Our top <span class="orange">Courses</span></h2>
+                <h2 class="mb-3 text-uppercase font-weight-bold">@lang('index.course_white') <span class="orange">@lang('index.course_orange')</span></h2>
                 <div class="divider"></div>
-                <p class="pt-3 pb-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, nventore veritatis.</p>
             </div>
         </div>
         <div class="row">
@@ -66,9 +65,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 mx-auto text-center">
-                <h2 class="mb-3 text-uppercase font-weight-bold text-white">Happy Cleints <span class="orange">Reviews</span></h2>
+                <h2 class="mb-3 text-uppercase font-weight-bold text-white">@lang('index.tesimonial_white') <span class="orange">@lang('index.tesimonial_orange')</span></h2>
                 <div class="divider"></div>
-                <p class="pt-3 pb-3 text-white">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, nventore veritatis.</p>
             </div>
         </div>
         <div class="row mt-3">
@@ -98,7 +96,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 mx-auto text-center">
-                <h2 class="mb-3 text-uppercase font-weight-bold">Our <span class="orange">Teachers</span></h2>
+                <h2 class="mb-3 text-uppercase font-weight-bold">@lang('index.teacher_white')<span class="orange">@lang('index.teacher_orange')</span></h2>
                 <div class="divider"></div>
                 <p class="pt-3 pb-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, nventore veritatis.</p>
             </div>
@@ -150,9 +148,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 mx-auto text-center">
-                <h2 class="mb-3 text-uppercase font-weight-bold">Our Latest <span class="orange">News</span></h2>
+                <h2 class="mb-3 text-uppercase font-weight-bold">@lang('index.latest_white') <span class="orange">@lang('index.latest_orange')</span></h2>
                 <div class="divider"></div>
-                <p class="pt-3 pb-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, nventore veritatis.</p>
             </div>
         </div>
         <div class="row">

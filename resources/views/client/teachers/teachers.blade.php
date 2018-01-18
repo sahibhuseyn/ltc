@@ -8,11 +8,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-md-12 mx-auto text-center">
-                    <h2 class="font-weight-bold text-uppercase display-4 text-white">Team Members </h2>
+                    <h2 class="font-weight-bold text-uppercase display-4 text-white">@lang('top_header.home') </h2>
                     <ol class="list-inline text-center">
-                        <li class="list-inline-item"><a href="#">Home </a> &nbsp; / </li>
-                        <li class="list-inline-item"><a href="#">Pages</a>  &nbsp; / </li>
-                        <li class="list-inline-item active">Event Single </li>
+                        <li class="list-inline-item"><a href="{{ route('index') }}">@lang('top_header.home')</a> &nbsp; / </li>
+                        <li class="list-inline-item active">@lang('top_header.teachers')</li>
                     </ol>
                 </div>
             </div>

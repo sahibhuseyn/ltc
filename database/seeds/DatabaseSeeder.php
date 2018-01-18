@@ -21,5 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PostSeed::class);
         $this->call(EventSeed::class);
         $this->call(GallerySeed::class);
+        $this->call(TranslationSeed::class);
+        $this->call(TypeSeed::class);
+        $this->call(StuydSeed::class);
     }
 }

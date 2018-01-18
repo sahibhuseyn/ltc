@@ -10,9 +10,8 @@
                 <div class="col-md-12 col-md-12 mx-auto text-center">
                     <h2 class="font-weight-bold text-uppercase display-4 text-white">About Us</h2>
                     <ol class="list-inline text-center">
-                        <li class="list-inline-item"><a href="#">Home </a> &nbsp; / </li>
-                        <li class="list-inline-item"><a href="#">Pages</a>  &nbsp; / </li>
-                        <li class="list-inline-item active">About Us </li>
+                        <li class="list-inline-item"><a href="{{ route('index') }}">@lang('top_header.main')</a> &nbsp; / </li>
+                        <li class="list-inline-item active">@lang('top_headers.about') </li>
                     </ol>
                 </div>
             </div>
@@ -24,10 +23,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <h2 class="text-uppercase font-weight-bold">Welcome to <span class="orange"> Pro Education</span></h2>
+                    <h2 class="text-uppercase font-weight-bold">@lang('about.white_txt') <span class="orange">@lang('about.orange_txt')</span></h2>
                     <div class="divider float-left"></div>
                     <div class="clearfix"></div>
-                    <p class="pt-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim adi minim veniam, quis nostrud exerci tation ullamcorperea commodo consequat utm euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim adi commodo minim euismod tincidunt.</p>
+                    <p class="pt-3">@lang('about.mission')</p>
 
                     <ul class="list-inline">
                         <li class="list-block-item"><span class="ti-angle-double-right"></span> Our Mission and Philosophy</li>
@@ -92,9 +91,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 mx-auto text-center">
-                    <h2 class="mb-3 text-uppercase font-weight-bold">Our <span class="orange">Teachers</span></h2>
+                    <h2 class="mb-3 text-uppercase font-weight-bold">@lang('index.teachers_white') <span class="orange">@lang('index.teachers_orange')</span></h2>
                     <div class="divider"></div>
-                    <p class="pt-3 pb-3">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, nventore veritatis.</p>
                 </div>
             </div>
             <div class="row">

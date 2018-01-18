@@ -12,7 +12,7 @@ class Course extends Model
 
     public static function getCourses ($language_code) {
         $language_id = Language::getLanguageByCode($language_code)->id;
-        return Course::where('language_id', $language_id)->paginate(10);
+        return Course::where('language_id', $language_id)->paginate(12);
     }
 
     public static function getCourseBySlug ($slug) {
